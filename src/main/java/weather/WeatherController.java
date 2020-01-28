@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeatherController {
 
     @GetMapping("/weather")
-    public Weather weather(@RequestParam(value = "id") int id) {
-        return new Weather.WeatherBuilder().id(id).humidity(75).temperature(15).windSpeed(70).build();
+    public Weather weather(@RequestParam(value = "city") String cityName) {
+        return new Weather.WeatherBuilder().id(id).humidity(60).temperature(15).windSpeed(70).build();
     }
 }

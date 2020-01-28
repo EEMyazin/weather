@@ -3,21 +3,24 @@ package weather;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
 @Builder
+@ToString
 public class Weather {
     private final long id;
-    private int temperature;
-    private int humidity;
-    private int windSpeed;
+    private final int temperature;
+    private final int humidity;
+    private final int windSpeed;
+    private final LocalDateTime timestamp;
+    private final City city;
 
-    @Override
-    public String toString() {
-        return "weather.Weather{" +
-                "temperature=" + temperature +
-                ", humidity=" + humidity +
-                '}';
+    public Weather(City city, LocalDateTime timestamp) {
+
     }
 }
