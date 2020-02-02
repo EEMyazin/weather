@@ -19,8 +19,4 @@ public class Weather {
     private final int windSpeed;
     private final LocalDateTime timestamp;
     private final City city;
-
-    public Weather(City city, LocalDateTime timestamp) {
-
-    }
 }
