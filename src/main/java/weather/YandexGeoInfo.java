@@ -1,6 +1,7 @@
 package weather;
 
 import com.jayway.jsonpath.JsonPath;
+import com.mee.weather.Coordinates;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class YandexGeoInfo implements GeoInfo{
@@ -13,7 +14,7 @@ public class YandexGeoInfo implements GeoInfo{
     }
 
     @Override
-    public Point byCoordinates(String cityName) {
+    public Coordinates byCoordinates(String cityName) {
         String response = webClient.get().uri(uriBuilder -> uriBuilder
                 .queryParam("apikey", apikey)
                 .queryParam("results", 1L)
@@ -22,6 +23,6 @@ public class YandexGeoInfo implements GeoInfo{
                 .build()).retrieve()
                 .bodyToMono(String.class).block();
         String[] coords = JsonPath.parse(response).read("response.GeoObjectCollection.featureMember[-1].GeoObject.Point.pos").toString().split(" ");
-        return new Point(Double.parseDouble(coords[0]), Double.parseDouble(coords[1]));
+        return new Coordinates(Double.parseDouble(coords[0]), Double.parseDouble(coords[1]));
     }
 }

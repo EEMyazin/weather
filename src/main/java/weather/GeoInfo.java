@@ -1,5 +1,7 @@
 package weather;
 
+import com.mee.weather.Coordinates;
+
 interface GeoInfo {
-    Point byCoordinates(String cityName);
+    Coordinates byCoordinates(String cityName);
 }
